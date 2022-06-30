@@ -57,7 +57,7 @@ const Allusers = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/category/cat" style={{ textDecoration: "none" }}>
+            <Link to={`/category/${params.row.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div

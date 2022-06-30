@@ -14,6 +14,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import Container from "@mui/material/Container";
 
 const SingleServiceProvider = () => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -373,28 +374,71 @@ const SingleServiceProvider = () => {
               </TabPanel>
 
               <TabPanel value="4">
-                {" "}
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={122}
-                  label={"com name"}
-                  id="fullWidth"
-                />
+                <Container maxWidth="fixed">
+                  <Box sx={{ bgcolor: "#fff1", height: "100vh" }}>
+                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                      <div className="col">
+                        <div className="card h-100">
+                          <div className="card-body">
+                          <h5 class="card-title">Vehicle A</h5>
+                          <br/>
+                            <div className="list-group">
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                  Vehicle Model ={" "}
+                                </li>
+                                <li class="list-group-item">Vehicle VIN = </li>
+                                <li class="list-group-item">
+                                  Vehicle License Plate ={" "}
+                                </li>
+                                <li class="list-group-item">
+                                  Vehicle Insurance Carrier ={" "}
+                                </li>
+                                <li class="list-group-item">
+                                  Vehicle Insurance Policy ={" "}
+                                </li>
+                                <li class="list-group-item">
+                                  Vehicle Insurance Expiration Date =
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Box>
+                </Container>
               </TabPanel>
               <TabPanel value="5">
-                {" "}
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={122}
-                  label={"com name"}
-                  id="fullWidth"
-                />
+                <Container maxWidth="fixed">
+                  <Box sx={{ bgcolor: "#F4F6F7", height: "100vh" }}>
+                    <div className="container">
+                      <div className="row row-cols-1 row-cols-md-3 g-4">
+                        <div className="col">
+                          <div className="card">
+                            <img
+                              src="https://images.pexels.com/photos/716411/pexels-photo-716411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                              className="card-img-top"
+                              alt="..."
+                            />
+                            <div className="card-body">
+                              <h5 className="card-title">Name</h5>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Phone No=</li>
+                                <li class="list-group-item">Email Id=</li>
+                                <li class="list-group-item">Dl=</li>
+                                <li class="list-group-item">
+                                  Year of Experience=
+                                </li>
+                                <li class="list-group-item">Twitter Handle=</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Box>
+                </Container>
               </TabPanel>
 
               <TabPanel value="6">

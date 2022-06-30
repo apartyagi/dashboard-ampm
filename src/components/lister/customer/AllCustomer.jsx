@@ -8,6 +8,20 @@ import * as React from "react";
 const Allusers = () => {
   const [data, setData] = useState(customersRow);
 
+  const enableUserhanler=(id)=>{
+    data.forEach((da,ind)=>{
+      if (id==ind) {
+        da.status="inactive";
+      }
+    })
+  }
+  const disableuserhandler=(id)=>{
+      data.forEach((da,ind)=>{
+        if (id==ind) {
+          da.status="active";
+        }
+      })
+    }
 
   const actionColumn = [
     {
@@ -22,7 +36,7 @@ const Allusers = () => {
             </Link>
             <div className="cellAction">
               <div>
-               {(params.row.status=="active")?<span className="deleteButton">inactive</span>:<span className="actioButton">active</span>}
+               {(params.row.status=="active")?<span onClick={()=>enableUserhanler(params.row.id)} className="deleteButton">inactive</span>:<span onClick={()=>disableuserhandler(params.row.id)} className="actioButton">active</span>}
               </div>
             </div>
           </div>

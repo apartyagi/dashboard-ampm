@@ -1,20 +1,58 @@
 import "./addsubcategory.scss";
-import React from 'react'
+import React from "react";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import { useState, useEffect } from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import axios from "axios";
+import Input from '@mui/material/Input';
+
 
 const AddSubcategory = ({ inputs, title }) => {
   const [file, setFile] = useState("");
-  const [age, setAge] = React.useState('');
+  const [desc, setdesc] = React.useState("");
+  const [catgeory, setcatgeory] = useState([]);
+  const ariaLabel = { 'aria-label': 'description' };
+
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setdesc(event.target.value);
   };
+
+  const finalSubCategoryPostData = {
+    SubcategoryName: "",
+    subcategoryDesc: "",
+    catgeory: {
+      id: "",
+    },
+  };
+
+  useEffect(() => {}, []);
+
+  const getAllCategoryFromAPi = async () => {
+    const dat = await axios.get(``);
+    console.log(dat.data);
+    setcatgeory(dat.data);
+  };
+
+  const getAllCategory = [
+    {
+      name: "plumber",
+    },
+    {
+      name: "electrical",
+    },
+    {
+      name: "HVAC",
+    },
+    {
+      name: "Lock Smith",
+    },
+  ];
+
   return (
     <div className="new">
       {/* <Sidebar /> */}
@@ -23,7 +61,52 @@ const AddSubcategory = ({ inputs, title }) => {
         <div className="top">
           <h1>{title}</h1>
         </div>
+
         <div className="bottom">
+          <div className="left">
+            <img  src="https://images.pexels.com/photos/12238398/pexels-photo-12238398.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
+          </div>
+          <div className="right">
+            <form>
+
+              {inputs.map((input) => (
+                <div className="formInput" key={input.id}>
+                  <label>{input.label}</label>
+                  {(input.type=="select")?(
+                    <>
+
+                     <Select
+                     size="small"
+                     value={desc}
+                     onChange={handleChange}
+                     displayEmpty
+                     inputProps={{ 'aria-label': 'Without label' }}
+                     >
+                     <MenuItem size="small" value="">
+                       <em>Select your category first</em>
+                     </MenuItem>
+                    {
+                      getAllCategory.map((dat,ind)=>(
+                        <MenuItem value={0+ind} key={ind}>
+                          {dat.name}
+                        </MenuItem>
+                      ))
+                    }
+                   </Select>
+                    </>
+                  ):(
+                    <input type={input.type} placeholder={input.placeholder} />
+                  )}
+                  
+                </div>
+              ))}
+              <button>Send</button>
+            </form>
+          </div>
+        </div> 
+
+       
+        {/* <div className="bottom">
           <div className="left">
             <img
               src={
@@ -53,7 +136,7 @@ const AddSubcategory = ({ inputs, title }) => {
                   <label>{input.label}</label>
                   {(input.type=="select")?(
                      <Select
-                     value={age}
+                     value={desc}
                      onChange={handleChange}
                      displayEmpty
                      inputProps={{ 'aria-label': 'Without label' }}
@@ -61,9 +144,13 @@ const AddSubcategory = ({ inputs, title }) => {
                      <MenuItem value="">
                        <em>None</em>
                      </MenuItem>
-                     <MenuItem value={10}>Ten</MenuItem>
-                     <MenuItem value={20}>Twenty</MenuItem>
-                     <MenuItem value={30}>Thirty</MenuItem>
+                    {
+                      getAllCategory.map((dat,ind)=>(
+                        <MenuItem value={0+ind} key={ind}>
+                          {dat.name}
+                        </MenuItem>
+                      ))
+                    }
                    </Select>
 
                   ):(
@@ -75,10 +162,10 @@ const AddSubcategory = ({ inputs, title }) => {
               <button>Send</button>
             </form>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default AddSubcategory
+export default AddSubcategory;

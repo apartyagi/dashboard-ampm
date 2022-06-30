@@ -25,6 +25,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import axios from "axios";
+import Container from '@mui/material/Container';
 
 const SingleCustomer = () => {
   const [checked, setChecked] = React.useState(["wifi"]);
@@ -152,6 +153,8 @@ const SingleCustomer = () => {
           </div>
         </div>
         <div>
+        
+
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -231,6 +234,7 @@ const SingleCustomer = () => {
                 </List>
               </TabPanel>
               <TabPanel value="3">
+               
                 {customerAddress.map((data, index) => (
                   <Accordion>
                     <AccordionSummary
