@@ -1,4 +1,4 @@
-export const serviceproviderColumns = [
+export const activeserviceproviderColumns = [
     { field: "id", headerName: "ID", width: 70 },
     {
       field: "user",
@@ -39,13 +39,13 @@ export const serviceproviderColumns = [
   ];
 
 
-export const serviceProviderRow = [
+export const activeserviceProviderRow = [
 
     {
       id: 1,
       username: "Jamie Lannister",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceproq@gmail.com",
+      email: "serviceproa@gmail.com",
       place:"helsinki",
       status: "active",
     },
@@ -53,15 +53,15 @@ export const serviceProviderRow = [
       id: 2,
       username: "Lannister",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceprow@gmail.com",
+      email: "serviceprob@gmail.com",
       place:"berlin",
-      status: "inactive",
+      status: "active",
     },
     {
       id: 3,
       username: "Stark",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceproe@gmail.com",
+      email: "serviceproc@gmail.com",
       place:"tokyo",
       status: "active",
     },
@@ -69,15 +69,15 @@ export const serviceProviderRow = [
       id: 4,
       username: "Targaryen",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "servicepror@gmail.com",
+      email: "serviceprod@gmail.com",
       place:"rio",
-      status: "inactive",
+      status: "active",
     },
     {
       id: 5,
       username: "Melisandre",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceprot@gmail.com",
+      email: "serviceproe@gmail.com",
       status: "active",
       place:"palermo",
     },
@@ -85,15 +85,15 @@ export const serviceProviderRow = [
       id: 6,
       username: "Clifford",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceproy@gmail.com",
-      status: "inactive",
+      email: "serviceprof@gmail.com",
+      status: "active",
       place:"france",
     },
     {
       id: 7,
       username: "Frances",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceprou@gmail.com",
+      email: "serviceprog@gmail.com",
       place:"prof",
       status: "active",
     },
@@ -101,7 +101,7 @@ export const serviceProviderRow = [
       id: 8,
       username: "Roxie",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceproi@gmail.com",
+      email: "serviceproh@gmail.com",
       place:"templace",
       status: "active",
     },
@@ -109,7 +109,7 @@ export const serviceProviderRow = [
       id: 9,
       username: "Roxie",
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      email: "serviceproo@gmail.com",
+      email: "serviceproi@gmail.com",
       place:"anonymous",
       status: "active",
     },
@@ -119,6 +119,6 @@ export const serviceProviderRow = [
       img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
       status: "active",
       place:"denver",
-      email: "serviceprop@gmail.com",
+      email: "serviceproj@gmail.com",
     },
   ];

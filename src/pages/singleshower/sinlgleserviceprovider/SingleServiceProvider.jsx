@@ -1,6 +1,4 @@
 import "./SingleServiceProvider.scss";
-import Chart from "../../../components/chart/Chart";
-import List from "../../../components/table/Table";
 import React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
@@ -8,13 +6,10 @@ import { useEffect, useState } from "react";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
-import TextField from "@mui/material/TextField";
-import { Grid } from "@mui/material";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import Container from "@mui/material/Container";
 
 const SingleServiceProvider = () => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -48,33 +43,59 @@ const SingleServiceProvider = () => {
     console.log(reso);
   };
   const bank = {
-    accountNo: serviceproviderdetails.accountNumber,
-    routingno: serviceproviderdetails.accountRoutingNumber,
-    bankaddress: serviceproviderdetails.bankAddress,
-    nameOfTheBankAccount: serviceproviderdetails.nameOfTheBankAccount,
-    bankname: serviceproviderdetails.nameOfTheBank,
+    // accountNo: serviceproviderdetails.accountNumber,
+    // routingno: serviceproviderdetails.accountRoutingNumber,
+    // bankaddress: serviceproviderdetails.bankAddress,
+    // nameOfTheBankAccount: serviceproviderdetails.nameOfTheBankAccount,
+    // bankname: serviceproviderdetails.nameOfTheBank,
+
+    accountNumber: "521265665",
+    accountRoutingNumber: "ROUTE854521",
+    bankAddress: "Spain",
+    nameOfTheBankAccount: "Jonathan sharma",
+    nameOfTheBank: "Bank of Spain",
   };
   const TradeAndBusinessInformation = {
-    comapnytradelicence:
-      serviceproviderdetails.companyTradeLicenseRegistrationNo,
-    comapnytradelicenceNo: serviceproviderdetails.companyTradeLicenseNo,
-    comapnytradelicenceexpiration:
-      serviceproviderdetails.companyTradeLicenseExpirationDate,
-    comapnytradelicheceurl: serviceproviderdetails.companyTradeLicensePhoto,
-    comapnybusinesslicencereg:
-      serviceproviderdetails.companyBusinessLicenseRegistrationNo,
-    comapnybusinesslicenceno: serviceproviderdetails.companyBusinessLicenseNo,
-    comapnybusinessexxpiration:
-      serviceproviderdetails.companyBusinessLicenseExpirationDate,
-    comapnybusinessurl: serviceproviderdetails.companyBusinessLicensePhoto,
+    // comapnytradelicence:
+    //   serviceproviderdetails.companyTradeLicenseRegistrationNo,
+    // comapnytradelicenceNo: serviceproviderdetails.companyTradeLicenseNo,
+    // comapnytradelicenceexpiration:
+    //   serviceproviderdetails.companyTradeLicenseExpirationDate,
+    // comapnytradelicheceurl: serviceproviderdetails.companyTradeLicensePhoto,
+    // comapnybusinesslicencereg:
+    //   serviceproviderdetails.companyBusinessLicenseRegistrationNo,
+    // comapnybusinesslicenceno: serviceproviderdetails.companyBusinessLicenseNo,
+    // comapnybusinessexxpiration:
+    //   serviceproviderdetails.companyBusinessLicenseExpirationDate,
+    // comapnybusinessurl: serviceproviderdetails.companyBusinessLicensePhoto,
+
+    companyTradeLicenseRegistrationNo:
+      "20ASSOPSQ",
+      companyTradeLicenseNo: "5862212225555",
+      companyTradeLicenseExpirationDate:
+      "25-11-2025",
+      companyTradeLicensePhoto: "aws.s3/bucket/workmen.png",
+      companyBusinessLicenseRegistrationNo:
+      "2062154QSD",
+      companyBusinessLicenseNo: "45565554558",
+      companyBusinessLicenseExpirationDate:
+      "15-12-2023",
+      companyBusinessLicensePhoto: "aws.s3/bucket/workmens.png",
   };
   const CompanyInsuranceInformation = {
-    generlicinscarr: serviceproviderdetails.companyGeneralLiabilityInsCarrier,
-    comglpolicy: serviceproviderdetails.companyGlPolicy,
-    glpolicyexipre: serviceproviderdetails.companyGlPolicyExpirationDate,
-    companyworkman: serviceproviderdetails.companyWorkmanCompInsCarrier,
-    companywcpolicy: serviceproviderdetails.companyWcPolicy,
-    companywcexpire: serviceproviderdetails.companyWcPolicyExpirationDate,
+    // generlicinscarr: serviceproviderdetails.companyGeneralLiabilityInsCarrier,
+    // comglpolicy: serviceproviderdetails.companyGlPolicy,
+    // glpolicyexipre: serviceproviderdetails.companyGlPolicyExpirationDate,
+    // companyworkman: serviceproviderdetails.companyWorkmanCompInsCarrier,
+    // companywcpolicy: serviceproviderdetails.companyWcPolicy,
+    // companywcexpire: serviceproviderdetails.companyWcPolicyExpirationDate,
+
+    companyGeneralLiabilityInsCarrier: "NewCarriesx",
+    companyGlPolicy: "#5264355",
+    glpolicyexipre: "09-04-20236",
+    companyGlPolicyExpirationDate: "20-4-2023",
+    companyWorkmanCompInsCarrier: "Avon Carrier",
+    companyWcPolicyExpirationDate: "10-5-2022",
   };
 
   const CompanyDetails = {};
@@ -92,13 +113,24 @@ const SingleServiceProvider = () => {
 
   const CompanyVehicalInformation = [
     {
-      vehiclemake: serviceproviderdetails.vehicleMake,
-      vehiclemodel: serviceproviderdetails.vehicleModel,
-      vehiclevin: serviceproviderdetails.vehicleVin,
-      vehicleplate: serviceproviderdetails.vehicleLicensePlate,
-      vehicleinsurancecarr: serviceproviderdetails.vehicleInsuranceCarrier,
-      vehicleinsurpolicy: serviceproviderdetails.vehicleInsurancePolicy,
-      vehicleinsuexpire: serviceproviderdetails.vehicleInsuranceExpirationDate,
+      vehiclemake: "metal",
+      vehiclemodel: "2008",
+      vehiclevin: "VIN9856ER",
+      vehicleplate: "UK98 BN 85214",
+      vehicleinsurancecarr: "Bajaj Insurance",
+      vehicleinsurpolicy: "#521RTG8515AS",
+      vehicleinsuexpire:
+        "12-06-2025",
+    },
+    {
+      vehiclemake: "metal",
+      vehiclemodel: "2010",
+      vehiclevin: "VIN7583656",
+      vehicleplate: "UK74 MN 64214",
+      vehicleinsurancecarr: "Hero Insurance",
+      vehicleinsurpolicy: "#98558AGGH41",
+      vehicleinsuexpire:
+        "25-10-2036",
     },
   ];
 
@@ -122,7 +154,7 @@ const SingleServiceProvider = () => {
       <div className="singleContainer">
         {/* <Navbar /> */}
         <div className="top">
-          <div className="left">
+          {/* <div className="left">
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
@@ -153,10 +185,11 @@ const SingleServiceProvider = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="right">
-            <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-          </div>
+          </div> */}
+          {/* <div className="right">
+            ``{" "}
+            {/* <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" /> */}
+          {/* </div>  */}
         </div>
         <div>
           <Box sx={{ width: "100%", typography: "body1" }}>
@@ -190,340 +223,315 @@ const SingleServiceProvider = () => {
                 </TabList>
               </Box>
               <TabPanel value="1">
-                <Grid item xs={8}>
-                  <Item>
-                    <Box
-                      component="form"
-                      sx={{
-                        "& .MuiTextField-root": { m: 1, width: "25ch" },
-                      }}
-                      noValidate
-                      autoComplete="off"
-                    >
-                      {Object.keys(userDetails).map((key, i) => (
-                        <TextField
-                          required
-                          id="outlined-required"
-                          label={key}
-                          multiline
-                          InputProps={{
-                            readOnly: true,
-                          }}
-                          defaultValue={userDetails[key]}
-                        />
-                      ))}
-                    </Box>
-                  </Item>
-                </Grid>
+
+<table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Field</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {Object.keys(userDetails).map(
+                    (key, i) => (
+                        <tr key={i}>
+                          <th scope="row">{key}</th>
+                          <td>{userDetails[key]}</td>
+                        </tr>
+                      ))
+                    }
+                  </tbody>
+                </table>
               </TabPanel>
               <TabPanel value="2">
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.generlicinscarr}
-                  label={"companyGeneralLiabilityInsCarrier "}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.comglpolicy}
-                  label={"companyGlPolicy"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.glpolicyexipre}
-                  label={"companyGlPolicyExpirationDate"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.companyworkman}
-                  label={"companyWorkmanCompInsCarrier"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.companywcpolicy}
-                  label={"companyWcPolicy"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={CompanyInsuranceInformation.companywcexpire}
-                  label={"companyWcPolicyExpirationDate"}
-                  id="fullWidth"
-                />
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Field</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(CompanyInsuranceInformation).map(
+                      (key, index) => (
+                        <tr key={index}>
+                          <th scope="row">{key}</th>
+                          <td>{CompanyInsuranceInformation[key]}</td>
+                        </tr>
+                      )
+                    )}
+                  </tbody>
+                </table>
               </TabPanel>
               <TabPanel value="3">
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnytradelicence}
-                  label={"companyTradeLicenseRegistrationNo"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnytradelicenceNo}
-                  label={"companyTradeLicenseNo"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={
-                    TradeAndBusinessInformation.comapnytradelicenceexpiration
-                  }
-                  label={"companyTradeLicenseExpiration"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnytradelicheceurl}
-                  label={"companyTradeLicensePhoto"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnybusinesslicencereg}
-                  label={"companyBusinessLicenseRegistrationN"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnybusinesslicenceno}
-                  label={"companyBusinessLicenseNo"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnybusinessexxpiration}
-                  label={"companyBusinessLicenseExpirationDat"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={TradeAndBusinessInformation.comapnybusinessurl}
-                  label={"companyBusinessLicensePhoto"}
-                  id="fullWidth"
-                />
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Field</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(TradeAndBusinessInformation).map(
+                      (key, index) => (
+                        <tr key={index}>
+                          <th scope="row">{key}</th>
+                          <td>{TradeAndBusinessInformation[key]}</td>
+                        </tr>
+                      )
+                    )}
+                  </tbody>
+                </table>
               </TabPanel>
 
               <TabPanel value="4">
-                <Container maxWidth="fixed">
-                  <Box sx={{ bgcolor: "#fff1", height: "100vh" }}>
-                    <div className="row row-cols-1 row-cols-md-3 g-4">
+                <div className="row row-cols-1 row-cols-md g-4  ">
+                  {CompanyVehicalInformation.map((data, index) => (
+                    <div className="shadow-sm p-3 mb-5 bg-body rounded">
                       <div className="col">
                         <div className="card h-100">
                           <div className="card-body">
-                          <h5 class="card-title">Vehicle A</h5>
-                          <br/>
-                            <div className="list-group">
-                              <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                  Vehicle Model ={" "}
-                                </li>
-                                <li class="list-group-item">Vehicle VIN = </li>
-                                <li class="list-group-item">
-                                  Vehicle License Plate ={" "}
-                                </li>
-                                <li class="list-group-item">
-                                  Vehicle Insurance Carrier ={" "}
-                                </li>
-                                <li class="list-group-item">
-                                  Vehicle Insurance Policy ={" "}
-                                </li>
-                                <li class="list-group-item">
-                                  Vehicle Insurance Expiration Date =
-                                </li>
-                              </ul>
-                            </div>
+                            <h5 className="card-title">Vehicle {index + 1}</h5>
+                            <table className="table ">
+                              <thead>
+                                <tr>
+                                  <th scope="col">Field</th>
+                                  <th scope="col">Answer</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <th scope="row">Number Plate</th>
+                                  <td>{data.vehicleplate}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Vin NUMBER</th>
+                                  <td>{data.vehiclevin}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Vehicle Model</th>
+                                  <td>{data.vehiclemodel}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Vehicle Make</th>
+                                  <td>{data.vehiclemake}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Insurance Policy</th>
+                                  <td>{data.vehicleinsurpolicy}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Insurance Carrier</th>
+                                  <td>{data.vehicleinsurancecarr}</td>
+                                </tr>
+                                <tr>
+                                  <th scope="row">Insurance Expire </th>
+                                  <td>{data.vehicleinsuexpire}</td>
+                                </tr>
+                              </tbody>
+                            </table>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </Box>
-                </Container>
+                  ))}
+                </div>
               </TabPanel>
               <TabPanel value="5">
-                <Container maxWidth="fixed">
-                  <Box sx={{ bgcolor: "#F4F6F7", height: "100vh" }}>
-                    <div className="container">
-                      <div className="row row-cols-1 row-cols-md-3 g-4">
-                        <div className="col">
-                          <div className="card">
-                            <img
-                              src="https://images.pexels.com/photos/716411/pexels-photo-716411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                              className="card-img-top"
-                              alt="..."
-                            />
-                            <div className="card-body">
-                              <h5 className="card-title">Name</h5>
-                              <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Phone No=</li>
-                                <li class="list-group-item">Email Id=</li>
-                                <li class="list-group-item">Dl=</li>
-                                <li class="list-group-item">
-                                  Year of Experience=
-                                </li>
-                                <li class="list-group-item">Twitter Handle=</li>
-                              </ul>
-                            </div>
-                          </div>
+                <div className="container">
+                  <div className="row row-cols-1 row-cols-md-3 g-4">
+                    <div className="shadow-sm p-3 mb-5 bg-body rounded">
+                    <div className="col">
+                      <div className="card h-100">
+                        <img
+                          src="https://images.pexels.com/photos/6474475/pexels-photo-6474475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          className="card-img-top img-fluid"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">Matthu</h5>
+                          <table className="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Phone No</th>
+                                <td>9854123656</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email Id</th>
+                                <td>newuser@gmail.com</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Dl</th>
+                                <td>DL45 2000 14 58</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Year of Experience</th>
+                                <td>2</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Twitter Handle</th>
+                                <td>twitter</td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
-                  </Box>
-                </Container>
+                    </div>
+
+                    {/*  */}
+                    <div className="shadow-sm p-3 mb-5 bg-body rounded">
+                    <div className="col">
+                      <div className="card h-60">
+                        <img
+                          src="https://images.pexels.com/photos/442151/pexels-photo-442151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          className="card-img-top img-fluid"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">Name</h5>
+                          <table className="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Phone No</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email Id</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Dl</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Year of Experience</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Twitter Handle</th>
+                                <td>sssss</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    {/*  */}
+                    <div className="shadow-sm p-3 mb-5 bg-body rounded">
+                    <div className="col">
+                      <div className="card h-100">
+                        <img
+                          src="https://media.istockphoto.com/photos/think-i-see-your-problem-picture-id514104433?s=612x612"
+                          className="card-img-top img-fluid mx-auto"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">Name</h5>
+                          <table className="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Phone No</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email Id</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Dl</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Year of Experience</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Twitter Handle</th>
+                                <td>sssss</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    {/*  */}
+                    <div className="shadow-sm p-3 mb-5 bg-body rounded">
+                    <div className="col">
+                      <div className="card h-100">
+                        <img
+                          src="https://images.pexels.com/photos/4393523/pexels-photo-4393523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          className="card-img-top img-fluid mx-auto"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <h5 className="card-title">Name</h5>
+                          <table className="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                              <tr>
+                                <th scope="row">Phone No</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Email Id</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Dl</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Year of Experience</th>
+                                <td>sssss</td>
+                              </tr>
+                              <tr>
+                                <th scope="row"> Twitter Handle</th>
+                                <td>sssss</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    {/*  */}
+                    
+                  </div>
+                </div>
               </TabPanel>
 
               <TabPanel value="6">
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={bank.bankname}
-                  label={"Bank Name"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={bank.nameOfTheBankAccount}
-                  label={"Name of The Bank Account Holder"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={bank.bankaddress}
-                  label={"Bank Address"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={bank.routingno}
-                  label={"Account Routing Number"}
-                  id="fullWidth"
-                />
-                <br />
-                <br />
-                <TextField
-                  fullWidth
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                  value={bank.accountNo}
-                  label={"Account Number"}
-                  id="fullWidth"
-                />
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Field</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Object.keys(bank).map((key, index) => (
+                      <tr key={index}>
+                        <th scope="row">{key}</th>
+                        <td>{bank[key]}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </TabPanel>
             </TabContext>
           </Box>
         </div>
 
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <div className="bottom">
+        {/* <div className="bottom">
           <h1 className="title">Last Transactions</h1>
-          <List />
-        </div>
+          {/* <List /> */}
+        {/* </div> */}
       </div>
     </div>
   );

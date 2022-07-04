@@ -4,7 +4,8 @@ import {categoryColumns,categoryRow} from "../../../temp/ListofAllCategory"
 import { Link } from "react-router-dom";
 import { useState,useEffect } from "react";
 import axios from "axios";
-const Allusers = () => {
+
+const AllCategory = () => {
   const [data, setData] = useState(categoryRow);
   const [getcategory, setgetcategory] = useState([]);
   
@@ -57,15 +58,15 @@ const Allusers = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`/category/${params.row.id}`} style={{ textDecoration: "none" }}>
+            <Link to={`/category`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <div
+            {/* <div
               className="editButton"
               onClick={() =>handledit(params.row.id)}
             >
               Edit
-            </div>
+            </div> */}
           </div>
         );
       },
@@ -85,4 +86,4 @@ const Allusers = () => {
   );
 };
 
-export default Allusers;
+export default AllCategory;

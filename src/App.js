@@ -1,7 +1,6 @@
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
-import Single from "./pages/singleshower/single/Single";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { subCatInputs,catInputs } from "./temp/formSource";
 import "./style/dark.scss";
@@ -11,11 +10,15 @@ import Allusers from "./components/lister/users/Allusers";
 import AllCustomer from "./components/lister/customer/AllCustomer";
 import AllCategory from "./components/lister/category/AllCategory";
 import AllServiceprovider from "./components/lister/serviceprovider/AllServiceprovider";
-import AllSubcategory from "./components/lister/subcategory/AllSubcategory"
 import Addcategory from './components/adder/category/Addcategory'
 import AddSubcategory from './components/adder/subcategory/AddSubcategory'
 import SingleCustomer from "./pages/singleshower/singlecustomer/SingleCustomer";
 import SingleServiceProvider from "./pages/singleshower/sinlgleserviceprovider/SingleServiceProvider";
+import Orders from "./components/orders/Orders";
+import AboutUS from "./components/aboutus/AboutUS";
+import ContactUs from "./components/contactus/ContactUs";
+import ActiveServiceproviders from './components/lister/activeserviceprovider/ActiveServiceproviders'
+import InActiveServiceproviders from "./components/lister/inactiveserviceprovider/InActivelServiceproviders";
 
 
 function App() {
@@ -48,20 +51,34 @@ function App() {
                  <Route index element={<AllServiceprovider/>}/>
                  <Route path=":id" element={<SingleServiceProvider/>}/>
                </Route>
-     
-               <Route path="category"  element={<List/>}>
-                 <Route index element={<AllCategory/>}/>
-                 <Route path=":id" element={<Single/>}/>
+
+                <Route path="category" element={<List/>}>
+                  <Route index element={<AllCategory/>} />
+                </Route>
+
+                <Route path="activeserv" element={<List/>} >
+                  <Route index element={<ActiveServiceproviders/>}/>
+                  <Route path=":id" element={<SingleServiceProvider/>}/>
+                </Route>
+
+                <Route path="inactiveserv" element={<List/>} >
+                  <Route index element={<InActiveServiceproviders/>}/>
+              
+                  <Route path=":id" element={<SingleServiceProvider/>}/>
+                </Route>
+
+               <Route path="orders" element={<List/>}>
+                  <Route index element={<Orders/>}/>
                </Route>
-     
-     
-               <Route path="subcategory"  element={<List/>}>
-                 <Route index element={<AllSubcategory/>}/>
-                 <Route path=":id" element={<Single/>}/>
+
+               <Route path="about" element={<List/>}>
+                  <Route index element={<AboutUS/>}/>
                </Route>
-     
-                 
-     
+
+               <Route path="contact" element={<List/>}>
+                  <Route index element={<ContactUs/>} />
+               </Route>
+
      
                  <Route path="add-cat" element={<List/>}>
                   <Route index element={<Addcategory inputs={catInputs} title="Add New Category" />}/>

@@ -60,10 +60,10 @@ const Sidebar = () => {
           </li>
           </Link>
           <Link to="/subcategory" style={{ textDecoration: "none" }}>
-          <li>
+          {/* <li>
             <LocalShippingIcon className="icon" />
             <span>Sub Category</span>
-          </li>
+          </li> */}
           </Link>
           <p className="title">ADD</p>
           <Link to="/add-cat" style={{textDecoration:"none"}}>
@@ -79,14 +79,22 @@ const Sidebar = () => {
           </li>
           </Link>
           <p className="title">SERVICE</p>
+          <Link to={`/activeserv`} style={{
+            textDecoration:"none"
+          }}>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>Demo</span>
+            <span>Active Service Providers</span>
           </li>
+          </Link>
+          <Link to={`/inactiveserv`} style={{
+            textDecoration:"none"
+          }}>
           <li>
             <PsychologyOutlinedIcon className="icon" />
-            <span>Demo</span>
+            <span>InActive Service Provider</span>
           </li>
+          </Link>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Demo</span>
@@ -96,14 +104,18 @@ const Sidebar = () => {
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>Demo</span>
           </li>
+          <Link to={`/contact`} style={{textDecoration:"none"}}>
           <li>
             <PsychologyOutlinedIcon className="icon" />
-            <span>Demo</span>
+            <span>Contact us</span>
           </li>
+          </Link>
+          <Link to={`/about`} style={{textDecoration:"none"}}>
           <li>
             <SettingsApplicationsIcon className="icon" />
-            <span>Demo</span>
+            <span>About us</span>
           </li>
+          </Link>
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />

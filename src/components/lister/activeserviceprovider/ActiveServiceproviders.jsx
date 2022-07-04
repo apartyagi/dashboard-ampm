@@ -1,15 +1,15 @@
-import "./serviceprovider.scss";
+import "./activeserviceproviders.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import * as React from "react";
 import {
-  serviceproviderColumns,
-  serviceProviderRow,
-} from "../../../temp/ListofAllServiceProvider";
+  activeserviceproviderColumns,
+  activeserviceProviderRow
+} from "../../../temp/ListofAllActiveServiceProvider";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const Allusers = () => {
-  const [data, setData] = useState(serviceProviderRow);
+const ActiveServiceproviders = () => {
+  const [data, setData] = useState(activeserviceProviderRow);
 
 
   const enableUserhanler=(id)=>{
@@ -60,7 +60,7 @@ const Allusers = () => {
         className="dat
         agrid"
         rows={data}
-        columns={serviceproviderColumns.concat(actionColumn)}
+        columns={activeserviceproviderColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
@@ -68,4 +68,4 @@ const Allusers = () => {
   );
 };
 
-export default Allusers;
+export default ActiveServiceproviders;
