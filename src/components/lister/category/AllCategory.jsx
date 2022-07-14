@@ -1,9 +1,6 @@
 import "./category.scss";
-import { DataGrid } from "@mui/x-data-grid";
-import {categoryColumns,categoryRow} from "../../../temp/ListofAllCategory"
-import { Link } from "react-router-dom";
+import {categoryRow} from "../../../temp/ListofAllCategory"
 import { useState,useEffect } from "react";
-import axios from "axios";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';

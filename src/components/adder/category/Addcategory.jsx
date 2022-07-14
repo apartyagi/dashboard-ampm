@@ -1,8 +1,6 @@
 import "./addcategory.scss";
 import React from 'react'
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-import CategoryS from "../../../service/CategoryS";
 
 const Addcategory = ({ inputs, title }) => {
   const [createCatState, setcreateCatState] = useState({

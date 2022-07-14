@@ -1,12 +1,11 @@
 import "./serviceprovider.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import * as React from "react";
 import {
   serviceproviderColumns,
   serviceProviderRow,
 } from "../../../temp/ListofAllServiceProvider";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import React,{ useState, useEffect } from "react";
 import Widget from "../../widget/Widget";
 import ServiceProvider from "../../../service/ServiceProvider";
 

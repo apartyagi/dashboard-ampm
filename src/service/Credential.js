@@ -1,6 +1,6 @@
 import axios from "axios"
-const server='localhost';
-const remote='23.23.60.46'
+const server='23.23.60.46';
+// const remote='localhost'
 const base_url=`http://${server}`;
 const BASE_URL_FOR_LOGIN= `${base_url}:8080/api/sign-in`;
 class Credential{
@@ -18,7 +18,7 @@ class Credential{
         
     }
     isLoggedIn(){
-        if(localStorage.getItem('token') === null || localStorage.getItem('token') == '' || localStorage.getItem('token')==='undefined' || localStorage.getItem('token').length == 0){
+        if(localStorage.getItem('token') === null || localStorage.getItem('token') === '' || localStorage.getItem('token')==='undefined' || localStorage.getItem('token').length === 0){
             return false;
         }
         else{

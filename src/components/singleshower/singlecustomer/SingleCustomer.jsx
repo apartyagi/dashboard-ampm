@@ -1,8 +1,6 @@
 import "./SingleCustomer.scss";
-import Chart from "../../../components/chart/Chart";
 import TList from "../../../components/table/Table";
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
@@ -25,7 +23,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
-import axios from "axios";
 import CustomerS from "../../../service/CustomerList";
 import {useParams} from "react-router-dom";
 const SingleCustomer = () => {

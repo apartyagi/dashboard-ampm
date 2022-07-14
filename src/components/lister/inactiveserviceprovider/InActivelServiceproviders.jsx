@@ -4,13 +4,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import Widget from "../../widget/Widget";
 import ServiceProvider from "../../../service/ServiceProvider";
 import {
-  inactiveserviceProviderRow,
   inactiveserviceproviderColumns,
 } from "../../../temp/ListofAllInActiveServiceProvider";
 import { Link } from "react-router-dom";
 
 const InActivelServiceproviders = () => {
-  const [data, setData] = useState(inactiveserviceProviderRow);
   const [inactiveServiceProviders, setinactiveServiceProviders] = useState([]);
   const [all, setall] = useState(0);
   const [acc, setacc] = useState(0);
@@ -37,23 +35,6 @@ useEffect(() => {
 }, [])
 
 
-
-  const enableUserhanler=(id)=>{
-    console.log(id-1);
-    data.forEach((da,ind)=>{
-      if (id-1==ind) {
-        da.status="inactive";
-      }
-    })
-  }
-  const disableuserhandler=(id)=>{
-    console.log(id-1);
-      data.forEach((da,ind)=>{
-        if (id-1==ind) {
-          da.status="active";
-        }
-      })
-    }
 
   const actionColumn = [
     {

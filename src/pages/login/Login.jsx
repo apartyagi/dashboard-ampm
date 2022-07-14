@@ -51,7 +51,7 @@ export default function Login() {
     const fetchAPi = async () => {
       try {
         const response = await Credential.loginuserAPI(loginDetals);
-        if (response.data.status == "false") {
+        if (response.data.status === "false") {
           setloginerr(true);
           console.log("Invalid username or password");
         } else {

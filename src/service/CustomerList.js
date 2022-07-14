@@ -1,6 +1,6 @@
 import axios from "axios";
-const server='localhost';
-const remote='23.23.60.46'
+const server='23.23.60.46';
+// const remote='23.23.60.46'
 const base_url=`http://${server}`;
 const BaseUrlForCustomer=`${base_url}:8080/admin/fetchallcustomer`;
 const BaseUrlForSingleCustomer=`${base_url}:8080/admin/single-customer/`;

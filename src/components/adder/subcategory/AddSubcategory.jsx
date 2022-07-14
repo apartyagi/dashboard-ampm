@@ -1,14 +1,8 @@
 import "./addsubcategory.scss";
 import React from "react";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState, useEffect } from "react";
-import InputLabel from "@mui/material/InputLabel";
+import { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import axios from "axios";
-import Input from '@mui/material/Input';
 
 
 const AddSubcategory = ({ inputs, title }) => {
