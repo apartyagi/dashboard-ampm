@@ -12,7 +12,18 @@ import Input from '@mui/material/Input';
 
 
 const AddSubcategory = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  const [createsubCategory, setcreatesubCategory] = useState({
+    subcategory:"",
+    description:"",
+    categoryid:""
+  });
+  
+  const formhandler=(e)=>{
+    const value=e.target.value;
+    setcreatesubCategory({...createsubCategory,[e.target.name]:value});
+  }
+  
+
   const [desc, setdesc] = React.useState("");
   const [catgeory, setcatgeory] = useState([]);
   const ariaLabel = { 'aria-label': 'description' };
@@ -22,20 +33,17 @@ const AddSubcategory = ({ inputs, title }) => {
     setdesc(event.target.value);
   };
 
+  const saveSubCat=(e)=>{
+    e.preventDefault();
+    console.log(createsubCategory);
+  }
+
   const finalSubCategoryPostData = {
     SubcategoryName: "",
     subcategoryDesc: "",
     catgeory: {
       id: "",
     },
-  };
-
-  useEffect(() => {}, []);
-
-  const getAllCategoryFromAPi = async () => {
-    const dat = await axios.get(``);
-    console.log(dat.data);
-    setcatgeory(dat.data);
   };
 
   const getAllCategory = [
@@ -63,22 +71,22 @@ const AddSubcategory = ({ inputs, title }) => {
         </div>
 
         <div className="bottom">
-          <div className="left">
-            <img  src="https://images.pexels.com/photos/12238398/pexels-photo-12238398.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-          </div>
+         
           <div className="right">
             <form>
-
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  {(input.type=="select")?(
-                    <>
-
-                     <Select
+            <div className="formInput">
+                  <label>Category</label>
+                  <input type="text" name="subcategory" onChange={(e)=>formhandler(e)} value={createsubCategory.subcategory}  placeholder={`Enter Category Name`} />
+                </div>
+                <div className="formInput">
+                  <label>Category</label>
+                  <input type="text" name="description" onChange={(e)=>formhandler(e)} value={createsubCategory.description}  placeholder={`Enter Category Name`} />
+                </div>
+                <Select
                      size="small"
-                     value={desc}
+                     value={createsubCategory.categoryid}
                      onChange={handleChange}
+                     name="categoryid"
                      displayEmpty
                      inputProps={{ 'aria-label': 'Without label' }}
                      >
@@ -93,76 +101,13 @@ const AddSubcategory = ({ inputs, title }) => {
                       ))
                     }
                    </Select>
-                    </>
-                  ):(
-                    <input type={input.type} placeholder={input.placeholder} />
-                  )}
-                  
-                </div>
-              ))}
-              <button>Send</button>
+              <button onClick={saveSubCat}>Send</button>
             </form>
           </div>
         </div> 
 
        
-        {/* <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-          </div>
-          <div className="right">
-            <form>
-              <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                />
-              </div>
-
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  {(input.type=="select")?(
-                     <Select
-                     value={desc}
-                     onChange={handleChange}
-                     displayEmpty
-                     inputProps={{ 'aria-label': 'Without label' }}
-                   >
-                     <MenuItem value="">
-                       <em>None</em>
-                     </MenuItem>
-                    {
-                      getAllCategory.map((dat,ind)=>(
-                        <MenuItem value={0+ind} key={ind}>
-                          {dat.name}
-                        </MenuItem>
-                      ))
-                    }
-                   </Select>
-
-                  ):(
-                    <input type={input.type} placeholder={input.placeholder} />
-                  )}
-                  
-                </div>
-              ))}
-              <button>Send</button>
-            </form>
-          </div>
-        </div> */}
+    
       </div>
     </div>
   );

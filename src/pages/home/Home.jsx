@@ -3,12 +3,30 @@ import Navbar from "../../components/navbar/Navbar";
 import "./home.scss";
 import Widget from "../../components/widget/Widget";
 import Table from "../../components/table/Table";
-import { useEffect } from "react";
+import ServiceS from "../../service/ServiceProvider";
+import CutomerS from "../../service/CustomerList";
+import { useEffect,useState } from "react";
 
 
 const Home = () => {
+  
+  const [tot, settot] = useState(0);
+  const [act, setact] = useState(0);
+  const [ina, setina] = useState(0);
+  const [alc, setalc] = useState(0);
+
   useEffect(() => {
-    console.log("GET REQUEST");
+    const fetchApi=async()=>{
+      const alCus=await CutomerS.findCountForAllCustomers();
+      const alSer=await ServiceS.findCountForAllServiceProviders();
+      const acSer=await ServiceS.findCountForActiveServiceProviders();
+      const inSer=await ServiceS.findCountForInActiveServiceProviders();
+      setalc(alCus.data.total);
+      settot(alSer.data.total);
+      setact(acSer.data.active);
+      setina(inSer.data.inactive);
+    }
+    fetchApi();
   }, [])
     
 
@@ -18,10 +36,10 @@ const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="widgets">
-          <Widget type="user" />
-          <Widget type="order" />
-          <Widget type="earning" />
-          <Widget type="balance" />
+          <Widget type="al-cus" amount={alc} />
+          <Widget type="al-serv" amount={tot} />
+          <Widget type="ac-serv" amount={act} />
+          <Widget type="in-serv" amount={ina} />
         </div>
         <div className="charts">
           {/* <Featured /> */}

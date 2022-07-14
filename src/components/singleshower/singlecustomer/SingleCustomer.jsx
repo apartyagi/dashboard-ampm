@@ -24,12 +24,37 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Button from "@mui/material/Button";
 import axios from "axios";
-import Container from '@mui/material/Container';
-
+import CustomerS from "../../../service/CustomerList";
+import {useParams} from "react-router-dom";
 const SingleCustomer = () => {
-  const [checked, setChecked] = React.useState(["wifi"]);
-  const [userDetailsSingle, setuserDetailsSingle] = useState([]);
+  
+  const [loading, setloading] = useState(true);
+  const [singleCustomerState, setsingleCustomerState] = useState({ })
+  const [isblocked, setisblocked] = useState(true);
+
+  let {id}=useParams();    
+
+  useEffect(() => {
+    const fetchApi=async()=>{
+      try{
+        const response=await CustomerS.fetchSingleCustomerfromApi(id);
+        console.log(response.data);
+        setsingleCustomerState(response.data);
+          setloading(false);  
+        
+      }catch(err){
+        setloading(true);
+        console.log(err);
+    }
+    
+  }
+  fetchApi();
+  }, []);
+
+
+
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -39,18 +64,7 @@ const SingleCustomer = () => {
     color: theme.palette.text.secondary,
   }));
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
 
   const [value, setValue] = React.useState("1");
 
@@ -58,59 +72,24 @@ const SingleCustomer = () => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    fetchAllAddressWithCustomerDetails();
-  }, []);
 
-  const fetchAllAddressWithCustomerDetails = async () => {
-    const fetcher = await axios.get(
-      `http://localhost:8080/customer/address/fetch/all/cus/1`
-    );
-    console.log(fetcher.data[0]);
-    const AllUserDetails = fetcher.data;
-    setuserDetailsSingle(AllUserDetails);
+  const userDetails = {
+    Name: singleCustomerState.name,
+    Address: singleCustomerState.address,
+    City: singleCustomerState.city,
+    contact_no:singleCustomerState.contact_no,
+    DateofBirth: singleCustomerState.dateofbirth,
+    EmailId: singleCustomerState.email,
+    Verified: "true",
+    Status: "enable",
   };
 
-  const customerAddress = [
-    {
-      id: 1,
-      name: "Apar Tyagi",
-      phone: "9852155",
-      pincode: "201001",
-      city: "Ghaziabad",
-      state: "UP",
-      message: null,
-      status: false,
-      locality: "raj nagar",
-      buildingNo: "26",
-      type: "Other",
-    },
-    {
-      id: 2,
-      name: "Apar Tyagi",
-      phone: "9852155",
-      pincode: "201001",
-      city: "Rajnagar",
-      state: "UP",
-      message: null,
-      status: false,
-      locality: "raj nagar",
-      buildingNo: "255",
-      type: "Home",
-    },
-  ];
-  const userDetails={
-    Name:"Denver",
-    Address:"Helsinki",
-    City:"USA",
-    DateofBirth:"23-08-2002",
-    EmailId:"denver@cooldude.com",
-    Verified:"true",
-    Status:"enable"
-  }
-
   return (
-    <div className="single">
+    <div>
+    {
+      loading?(<>loading...</>):(
+        <>  
+       <div className="single">
       {/* <Sidebar /> */}
       {/* {console.log(userDetailsSingle[0].id)} */}
       <div className="singleContainer">
@@ -120,41 +99,35 @@ const SingleCustomer = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
+              {/* <img
                 src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
                 alt=""
                 className="itemImg"
-              />
+              /> */}
               <div className="details">
-                <h1 className="itemTitle">Jane Doe</h1>
+                <h2 className="itemTitle">{singleCustomerState.name}</h2>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
-                  <span className="itemValue">email@gmail.com</span>
+                  <span className="itemValue">{singleCustomerState.email}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Phone:</span>
-                  <span className="itemValue">+1 2345 67 89</span>
+                  <span className="itemValue">{singleCustomerState.contact_no}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Address:</span>
                   <span className="itemValue">
-                    Elton St. 234 Garden Yd. NewYork
+                   {singleCustomerState.address}
                   </span>
-                </div>
-                <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">USA</span>
                 </div>
               </div>
             </div>
           </div>
-          <div className="right">
+          <div className="rights">
             {/* <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" /> */}
           </div>
         </div>
         <div>
-        
-
           <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
               <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -166,7 +139,7 @@ const SingleCustomer = () => {
                   scrollButtons={true}
                 >
                   <Tab label="Basic Information" value="1" wrapped />
-                  <Tab label="Details" value="2" wrapped />
+                  <Tab label="Setting" value="2" wrapped />
                   <Tab label="Address" value="3" wrapped />
                   <Tab label="Orders" value="4" wrapped />
                 </TabList>
@@ -182,12 +155,10 @@ const SingleCustomer = () => {
                       noValidate
                       autoComplete="off"
                     >
-
-                      {
-                        Object.keys(userDetails).map((key, i) => (
-                        
-                          <TextField
+                      {Object.keys(userDetails).map((key, i) => (
+                        <TextField
                           required
+                          key={i}
                           id="outlined-required"
                           label={key}
                           multiline
@@ -196,11 +167,7 @@ const SingleCustomer = () => {
                           }}
                           defaultValue={userDetails[key]}
                         />
-          
-                        ))
-                    }
-
-  
+                      ))}
                     </Box>
                   </Item>
                 </Grid>
@@ -224,25 +191,43 @@ const SingleCustomer = () => {
                     />
                     <Switch
                       edge="end"
-                      onChange={handleToggle("wifi")}
-                      checked={checked.indexOf("wifi") !== -1}
+                      defaultChecked={true}
+                      onChange={(e) => {
+                        setisblocked(e.target.checked)}}
                       inputProps={{
                         "aria-labelledby": "switch-list-label-wifi",
                       }}
                     />
                   </ListItem>
+                  <div>
+                    {!isblocked ? (
+                      <>
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Enter Reason"
+                          sx={{ width: "55ch" }}
+                          placeholder="Account suspended due to suspisius activity"
+                        />
+                        <br />
+                        <br/>
+                        <Button variant="contained">Conform</Button>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    </div>
                 </List>
               </TabPanel>
               <TabPanel value="3">
-               
-                {customerAddress.map((data, index) => (
+                {singleCustomerState.addressDtos.map((data, index) => (
                   <Accordion>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1a-content"
-                      id={data.buildingNo}
+                      id={data.id}
                     >
-                      <Typography>{data.type}</Typography>
+                      <Typography>{"Home"}</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                       <Typography>
@@ -291,7 +276,6 @@ const SingleCustomer = () => {
                               <th scope="row">Type of Address</th>
                               <td>{data.type}</td>
                             </tr>
-
                           </tbody>
                         </table>
                       </Typography>
@@ -312,6 +296,11 @@ const SingleCustomer = () => {
         </div>
       </div>
     </div>
+
+        </>
+        )
+      }
+      </div>
   );
 };
 

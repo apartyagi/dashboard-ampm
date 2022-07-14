@@ -1,19 +1,6 @@
 export const categoryColumns = [
     { field: "id", headerName: "ID", width: 70 },
     
-    // {
-    //   field:"img",
-    //   headerName:"logo",
-    //   width:100,
-    //   renderCell: (params) => {
-    //     return (
-    //       <div className="cellWithImg">
-    //         <img className="cellImg" src={params.row.img} alt="avatar" />
-    //         {params.row.username}
-    //       </div>
-    //     );
-    //   },
-    // },
     {
       field: "name",
       headerName: "name",
@@ -25,8 +12,9 @@ export const categoryColumns = [
       width: 230,
     },
     {
-      field:"subcat",
+      field:"subCategory",
       headerName:"SubCategory",
+      valueGetter: (params) =>{},
       width:250
     }
   

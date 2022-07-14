@@ -1,38 +1,35 @@
 export const customerColumns = [
-    { field: "id", headerName: "ID", width: 20 },
+    { field: "id", headerName: "ID", width: 80 },
     {
-      field: "user",
+      field: "name",
       headerName: "Customer Name",
-      width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.username}
-          </div>
-        );
-      },
+      // width: 230,
+      flex:1
     },
     {
       field: "email",
       headerName: "Email",
-      width: 250,
+      // width: 250,
+      flex:1
     },
   
     {
-      field: "contact",
+      field: "contact_no",
       headerName: "Contact No",
-      width: 100,
+      // width: 200,
+      flex:1
     },
     {
       field: "city",
       headerName: "City",
-      width: 100,
+      // width: 300,
+      flex:1
     },
     {
       field: "status",
       headerName: "Status",
-      width: 90,
+      // width: 160,
+      flex:1,
       renderCell: (params) => {
         return (
           <div className={`cellWithStatus ${params.row.status}`}>
@@ -40,7 +37,7 @@ export const customerColumns = [
           </div>
         );
       },
-    },
+    }
   ];
 
 

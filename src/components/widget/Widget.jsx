@@ -6,36 +6,69 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 
 
-const Widget = ({ type }) => {
+const Widget = ({ type,amount}) => {
   let data;
 
   //temporary
   const diff = 20;
 
   switch (type) {
-    case "user":
+        case "ac-cus":
+        data = {
+          title: "Active Customer",
+          amount : amount,
+          link: "View all Active Customers",
+          icon: (
+            <ShoppingCartOutlinedIcon
+              className="icon"
+              style={{
+                backgroundColor: "rgba(218, 165, 32, 0.2)",
+                color: "goldenrod",
+              }}
+            />
+          ),
+        };
+        break;
+
+        case "in-cus":
+        data = {
+          title: "InActive Customer",
+          amount : amount,
+          link: "View all in-active customers",
+          icon: (
+            <ShoppingCartOutlinedIcon
+              className="icon"
+              style={{
+                backgroundColor: "rgba(218, 165, 32, 0.2)",
+                color: "goldenrod",
+              }}
+            />
+          ),
+        };
+        break;
+
+        case "al-cus":
+        data = {
+          title: "All Customer",
+          amount : amount,
+          link: "View all Customer",
+          icon: (
+            <ShoppingCartOutlinedIcon
+              className="icon"
+              style={{
+                backgroundColor: "rgba(218, 165, 32, 0.2)",
+                color: "goldenrod",
+              }}
+            />
+          ),
+        };
+        break;
+
+    case "in-serv":
       data = {
-        title: "USERS",
-        isMoney: false,
-        amount : 1000,
-        link: "See all users",
-        icon: (
-          <PersonOutlinedIcon
-            className="icon"
-            style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
-            }}
-          />
-        ),
-      };
-      break;
-    case "order":
-      data = {
-        title: "Service Providers",
-        isMoney: false,
-        amount : 200,
-        link: "View all service providers",
+        title: "InActive Service Providers",
+        amount : amount,
+        link: "View all In-active service providers",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -47,12 +80,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "ac-serv":
       data = {
-        title: "Customers",
-        isMoney: false,
-        amount : 800,
-        link: "view all customers",
+        title: "Active Service Provider",
+        amount : amount,
+        link: "view all active service providers",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -61,12 +93,11 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "al-serv":
       data = {
-        title: "Total Category",
-        isMoney: false,
-        amount : 4,
-        link: "See details",
+        title: "All Serviceprovider",
+        amount : amount,
+        link: "see all service providers",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -87,14 +118,13 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {data.amount}
+          {data.amount}
         </span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
         <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
+
         </div>
         {data.icon}
       </div>

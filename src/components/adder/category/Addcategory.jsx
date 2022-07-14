@@ -2,9 +2,31 @@ import "./addcategory.scss";
 import React from 'react'
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
+import CategoryS from "../../../service/CategoryS";
 
 const Addcategory = ({ inputs, title }) => {
-  const [file, setFile] = useState("");
+  const [createCatState, setcreateCatState] = useState({
+    category:"",
+    description:""
+  })
+
+  const formhandler=(e)=>{
+    const value=e.target.value;
+    setcreateCatState({...createCatState,[e.target.name]:value});
+  }
+  const saveCategory=(e)=>{
+    e.preventDefault();
+
+    console.log(createCatState);
+    // CategoryS.saveNewCategory(createCatState).then(
+    //   (res)=>{
+    //     console.log(res);
+    //   }
+    // ).catch((err)=>{
+    //   console.log(err);
+    // });
+
+  }
 
   return (
     <div className="new">
@@ -13,37 +35,18 @@ const Addcategory = ({ inputs, title }) => {
           <h1>{title}</h1>
         </div>
         <div className="bottom">
-          <div className="left">
-            <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              alt=""
-            />
-          </div>
+         
           <div className="right">
             <form>
-              <div className="formInput">
-                <label htmlFor="file">
-                  Image: <DriveFolderUploadOutlinedIcon className="icon" />
-                </label>
-                <input
-                  type="file"
-                  id="file"
-                  onChange={(e) => setFile(e.target.files[0])}
-                  style={{ display: "none" }}
-                />
-              </div>
-
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
+            <div className="formInput">
+                  <label>Category</label>
+                  <input type="text" name="category" onChange={(e)=>formhandler(e)} value={createCatState.category}  placeholder={`Enter Category Name`} />
                 </div>
-              ))}
-              <button>Send</button>
+                <div className="formInput">
+                  <label>Description</label>
+                  <input type="text" name="description" onChange={(e)=>formhandler(e)} value={createCatState.description} placeholder={`Enter Category Name`} />
+                </div>
+              <button onClick={saveCategory}>Send</button>
             </form>
           </div>
         </div>

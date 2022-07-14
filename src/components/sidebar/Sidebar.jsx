@@ -14,6 +14,8 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { ListItemText } from "@mui/material";
+import Credential from "../../service/Credential";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -35,12 +37,12 @@ const Sidebar = () => {
           </li>
             </Link>
           <p className="title"> ACTIVE LISTS</p>
-          <Link to="/users" style={{ textDecoration: "none" }}>
+          {/* <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
-              {/* <PersonOutlineIcon className="icon" /> */}
-              {/* <span>Users</span> */}
+               <PersonOutlineIcon className="icon" /> 
+               <span>Users</span> 
             </li>
-          </Link>
+          </Link> */}
           <Link to="/customer" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
@@ -65,7 +67,7 @@ const Sidebar = () => {
             <span>Sub Category</span>
           </li> */}
           </Link>
-          <p className="title">ADD</p>
+          {/* <p className="title">ADD</p>
           <Link to="/add-cat" style={{textDecoration:"none"}}>
           <li>
             <InsertChartIcon className="icon" />
@@ -77,7 +79,7 @@ const Sidebar = () => {
             <NotificationsNoneIcon className="icon" />
             <span> Add Sub Category</span>
           </li>
-          </Link>
+          </Link> */}
           <p className="title">SERVICE</p>
           <Link to={`/activeserv`} style={{
             textDecoration:"none"
@@ -95,36 +97,49 @@ const Sidebar = () => {
             <span>InActive Service Provider</span>
           </li>
           </Link>
+          <Link to={`/rb`} style={{
+            textDecoration:"none"
+          }}>
           <li>
             <SettingsApplicationsIcon className="icon" />
-            <span>Demo</span>
+            <span>Recent Booking</span>
           </li>
+        </Link>
           <p className="title">PAYMENTS</p>
+          <Link  to={`/alor`} style={{
+            textDecoration:"none"
+          }}>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>Demo</span>
+            <span>All Orders</span>
           </li>
+          </Link>
           <Link to={`/contact`} style={{textDecoration:"none"}}>
           <li>
             <PsychologyOutlinedIcon className="icon" />
             <span>Contact us</span>
           </li>
           </Link>
-          <Link to={`/about`} style={{textDecoration:"none"}}>
+          {/* <Link to={`/about`} style={{textDecoration:"none"}}>
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>About us</span>
           </li>
-          </Link>
+          </Link> */}
           <p className="title">USER</p>
           <li>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
+          <Link to="" onClick={()=>{
+            Credential.logoutUserInFrontEnd();
+            window.location.href="/"
+          }}  style={{textDecoration:"none"}} >
           <li>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
           </li>
+          </Link>
         </ul>
       </div>
       <div className="bottom">

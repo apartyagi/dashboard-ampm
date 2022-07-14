@@ -1,33 +1,29 @@
 export const activeserviceproviderColumns = [
     { field: "id", headerName: "ID", width: 70 },
     {
-      field: "user",
-      headerName: "User",
-      width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.username}
-          </div>
-        );
-      },
+      field: "companyName",
+      headerName: "Company Name",
+      // width: 230,
+      flex:1,
     },
     {
       field: "email",
       headerName: "Email",
-      width: 230,
+      // width: 230,
+      flex:1,
     },
   
     {
-      field: "place",
-      headerName: "place",
-      width: 100,
+      field: "companyAddress",
+      headerName: "Company Address",
+      // width: 
+      flex:1,
     },
     {
       field: "status",
       headerName: "Status",
-      width: 160,
+      // width: 160,
+      flex:1,
       renderCell: (params) => {
         return (
           <div className={`cellWithStatus ${params.row.status}`}>
@@ -43,80 +39,80 @@ export const activeserviceProviderRow = [
 
     {
       id: 1,
-      username: "Jamie Lannister",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Jamie Lannister",
+      
       email: "serviceproa@gmail.com",
       place:"helsinki",
       status: "active",
     },
     {
       id: 2,
-      username: "Lannister",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Lannister",
+      
       email: "serviceprob@gmail.com",
       place:"berlin",
       status: "active",
     },
     {
       id: 3,
-      username: "Stark",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Stark",
+      
       email: "serviceproc@gmail.com",
       place:"tokyo",
       status: "active",
     },
     {
       id: 4,
-      username: "Targaryen",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Targaryen",
+      
       email: "serviceprod@gmail.com",
       place:"rio",
       status: "active",
     },
     {
       id: 5,
-      username: "Melisandre",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Melisandre",
+      
       email: "serviceproe@gmail.com",
       status: "active",
       place:"palermo",
     },
     {
       id: 6,
-      username: "Clifford",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Clifford",
+      
       email: "serviceprof@gmail.com",
       status: "active",
       place:"france",
     },
     {
       id: 7,
-      username: "Frances",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Frances",
+      
       email: "serviceprog@gmail.com",
       place:"prof",
       status: "active",
     },
     {
       id: 8,
-      username: "Roxie",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Roxie",
+      
       email: "serviceproh@gmail.com",
       place:"templace",
       status: "active",
     },
     {
       id: 9,
-      username: "Roxie",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "Roxie",
+      
       email: "serviceproi@gmail.com",
       place:"anonymous",
       status: "active",
     },
     {
       id: 10,
-      username: "servicePro",
-      img: "https://images.pexels.com/photos/1820770/pexels-photo-1820770.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      user: "servicePro",
+
       status: "active",
       place:"denver",
       email: "serviceproj@gmail.com",

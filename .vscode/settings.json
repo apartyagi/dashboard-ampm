@@ -1,3 +1,6 @@
 {
-    "editor.cursorBlinking": "expand"
+    "editor.cursorBlinking": "expand",
+    "workbench.editor.wrapTabs": true,
+    "workbench.editor.tabCloseButton": "left",
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

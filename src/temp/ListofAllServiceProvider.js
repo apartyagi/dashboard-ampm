@@ -1,41 +1,37 @@
 export const serviceproviderColumns = [
     { field: "id", headerName: "ID", width: 70 },
     {
-      field: "user",
-      headerName: "User",
-      width: 230,
-      renderCell: (params) => {
-        return (
-          <div className="cellWithImg">
-            <img className="cellImg" src={params.row.img} alt="avatar" />
-            {params.row.username}
-          </div>
-        );
-      },
+      field:"companyName",
+      headerName:"Company Name",
+      // width:230
+      flex:1
     },
     {
       field: "email",
       headerName: "Email",
-      width: 230,
-    },
-  
-    {
-      field: "place",
-      headerName: "place",
-      width: 100,
+      // width: 230,
+      flex:1
+
     },
     {
-      field: "status",
-      headerName: "Status",
-      width: 160,
+      field:"companyAddress",
+      headerName:"Company Address",
+      // width:230
+      flex:1
+    }, 
+     {
+      field:"status",
+      headerName:"Status",
+      // width:230
+      flex:1,
       renderCell: (params) => {
         return (
           <div className={`cellWithStatus ${params.row.status}`}>
             {params.row.status}
           </div>
         );
-      },
-    },
+    }
+  }
   ];
 
 

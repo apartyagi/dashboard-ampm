@@ -22,29 +22,13 @@
         padding: 20px;
         position: relative;
 
-        .editButton {
-          position: absolute;
-          top: 0;
-          right: 0;
-          padding: 5px;
-          font-size: 12px;
-          color: #7451f8;
-          background-color: #7551f818;
-          cursor: pointer;
-          border-radius: 0px 0px 0px 5px;
-        }
+      
 
         .item {
           display: flex;
           gap: 20px;
 
-          .itemImg {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
+          
           .details {
             .itemTitle {
               margin-bottom: 10px;
@@ -70,7 +54,12 @@
       }
 
       .right {
-        flex: 2;
+        flex: 1;
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        // border: 2px solid red;
+        // align-self: flex-end;
+        
       }
     }
 
@@ -86,5 +75,33 @@
       color: lightgray;
       margin-bottom: 20px;
     }
+  }
+}
+.cellAction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .viewButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    border: 1px dotted rgba(0, 0, 139, 0.596);
+    cursor: pointer;
+  }
+  
+  .deleteButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: crimson;
+    border: 1px dotted rgba(220, 20, 60, 0.6);
+    cursor: pointer;
+  }
+  .actioButton {
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: rgb(9, 124, 74);
+    border: 1px dotted rgba(13, 134, 63, 0.6);
+    cursor: pointer;
   }
 }

@@ -1,15 +1,41 @@
 import "./inactiveserviceproviders.scss";
+import { useState,useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import * as React from "react";
+import Widget from "../../widget/Widget";
+import ServiceProvider from "../../../service/ServiceProvider";
 import {
   inactiveserviceProviderRow,
   inactiveserviceproviderColumns,
 } from "../../../temp/ListofAllInActiveServiceProvider";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 const InActivelServiceproviders = () => {
   const [data, setData] = useState(inactiveserviceProviderRow);
+  const [inactiveServiceProviders, setinactiveServiceProviders] = useState([]);
+  const [all, setall] = useState(0);
+  const [acc, setacc] = useState(0);
+  const [inn, setinn] = useState(0);
+
+
+useEffect(() => {
+    const fetchApi=async()=>{
+      try{
+        const respone=await ServiceProvider.fetchAllINACTIVE_SERVICE_PROVIDERS();
+        const alSer=await ServiceProvider.findCountForAllServiceProviders();
+        const acS=await ServiceProvider.findCountForActiveServiceProviders();
+        const inS =await ServiceProvider.findCountForInActiveServiceProviders();
+        setinn(inS.data.inactive);
+        setacc(acS.data.active);
+        setall(alSer.data.total);
+        setinactiveServiceProviders(respone.data);
+        console.log(respone.data);
+      }catch(err){
+        console.warn(err);
+      }
+    }
+    fetchApi();
+}, [])
+
 
 
   const enableUserhanler=(id)=>{
@@ -43,27 +69,33 @@ const InActivelServiceproviders = () => {
             >
               <div className="viewButton">View</div>
             </Link>
-      
-            <div className="cellAction">
-              <div>
-               {(params.row.status=="active")?<span onClick={()=>enableUserhanler(params.row.id)} className="deleteButton">inactive</span>:<span onClick={()=>disableuserhandler(params.row.id)} className="actioButton">active</span>}
-              </div>
-            </div>
           </div>
         );
       },
     },
   ];
   return (
+    <div>
+       <div className="home">
+      <div className="homeContainer">
+        <div className="widgets">
+          <Widget type="al-serv" amount={all} />
+          <Widget type="ac-serv" amount={acc} />
+          <Widget type="in-serv" amount={inn} />
+        </div>
+        
+      </div>
+    </div>
     <div className="datatable">
       <DataGrid
         className="dat
         agrid"
-        rows={data}
+        rows={inactiveServiceProviders}
         columns={inactiveserviceproviderColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
       />
+    </div>
     </div>
   );
 };

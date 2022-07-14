@@ -2,17 +2,37 @@ import "./customer.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { customerColumns, customersRow } from "../../../temp/ListofAllCustomer";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import * as React from "react";
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Customer from '../../../service/CustomerList'
+import Widget from "../../widget/Widget";
+
 
 const Allusers = () => {
+  const [allCustomerState, setallCustomerState] = useState([]);
+
+  useEffect(() => {
+     const fetchApi=async()=>{
+       try{
+         const response =await Customer.fetchAllCustomerFromApi();
+         setallCustomerState(response.data[0]);
+         console.log(response.data[0]);
+       }catch(e){
+         console.log(e);
+       }
+     }
+     fetchApi();
+  }, [])
+  
+
   const [data, setData] = useState(customersRow);
   const [customertype, setcustomertype] = React.useState("mixer");
+
 
   const handleChange = (event) => {
    setcustomertype(event.target.value);
@@ -49,7 +69,15 @@ const Allusers = () => {
   }
  }
 
-
+const userrowww=[
+  {
+    id:allCustomerState.id,
+    dob:allCustomerState.dateofbirth,
+    contact: allCustomerState.contact_no,
+    city: allCustomerState.city,
+    address: allCustomerState.address,
+  }
+]    
 
   const actionColumn = [
     {
@@ -62,19 +90,24 @@ const Allusers = () => {
             <Link to={`/customer/${params.id}`} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
-            <div className="cellAction">
-              <div>
-               {(params.row.status=="active")?<span onClick={()=>enableUserhanler(params.row.id)} className="deleteButton">inactive</span>:<span onClick={()=>disableuserhandler(params.row.id)} className="actioButton">active</span>}
-              </div>
-            </div>
           </div>
         );
       },
     },
   ];
   return (
+    <div>
+      <div className="home">
+      <div className="homeContainer">
+        <div className="widgets">
+          <Widget type="al-cus" amount="15" />
+          <Widget type="ac-cus" amount="15" />
+          <Widget type="in-cus" amount="0" />
+        </div>
+        
+      </div>
+    </div>
     <div className="datatable">
-      <div>
       <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Filter</InputLabel>
@@ -90,17 +123,17 @@ const Allusers = () => {
           <MenuItem value={`mixer`}>List of All  Customer</MenuItem>
         </Select>
       </FormControl>
-    </Box>
-      </div>
+      </Box>
      <br/>
       <DataGrid
         className="dat
         agrid"
-        rows={data}
+        rows={allCustomerState}
         columns={customerColumns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
+        pageSize={50}
+        rowsPerPageOptions={[50]}
       />
+    </div>
     </div>
   );
 };

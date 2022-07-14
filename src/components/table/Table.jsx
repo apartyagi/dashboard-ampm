@@ -11,53 +11,73 @@ const TList = () => {
   const rows = [
     {
       id: 1143155,
-      product: "Acer Nitro 5",
-      img: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_UY327_FMwebp_QL65_.jpg",
+      product: "Plumber",
       customer: "John Smith",
-      date: "1 March",
-      amount: 785,
+      serv:"Arthur",
+      date: "1 March | 5:36 PM",
+      amount: "$785",
       method: "Cash on Delivery",
-      status: "Approved",
-    },
-    {
-      id: 2235235,
-      product: "Playstation 5",
-      img: "https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_UY327_FMwebp_QL65_.jpg",
-      customer: "Michael Doe",
-      date: "1 March",
-      amount: 900,
-      method: "Online Payment",
       status: "Pending",
     },
     {
+      id: 2235235,
+      product: "HVAC",
+      customer: "Michael Doe",
+      date: "8 March | 6:17 AM",
+      amount: "$900",
+      serv:"Martha",
+      method: "Online Payment",
+      status: "Success",
+    },
+    {
       id: 2342353,
-      product: "Redragon S101",
-      img: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_UY327_FMwebp_QL65_.jpg",
+      product: "ELECTRICAL",
       customer: "John Smith",
-      date: "1 March",
-      amount: 35,
+      date: "1 March | 5:36 PM",
+      serv:"Eddie",
+      amount: "$35",
       method: "Cash on Delivery",
       status: "Pending",
     },
     {
       id: 2357741,
-      product: "Razer Blade 15",
-      img: "https://m.media-amazon.com/images/I/71wF7YDIQkL._AC_UY327_FMwebp_QL65_.jpg",
+      product: "HVAC",
       customer: "Jane Smith",
-      date: "1 March",
-      amount: 920,
+      date: "8 March | 6:17 AM",
+      serv:"Jonas",
+      amount: "$920",
       method: "Online",
-      status: "Approved",
+      status: "Success",
     },
     {
       id: 2342355,
-      product: "ASUS ROG Strix",
-      img: "https://m.media-amazon.com/images/I/81hH5vK-MCL._AC_UY327_FMwebp_QL65_.jpg",
+      product: "LOCKSMITH",
       customer: "Harold Carol",
-      date: "1 March",
-      amount: 2000,
+      date: "8 March | 6:17 AM",
+      serv:"Adam",
+      amount: "$2000",
       method: "Online",
-      status: "Pending",
+      status: "Success",
+    },
+    {
+      id: 5342355,
+      product: "ELECTRICAL",
+      customer: "Harold Carol",
+      date: "1 March | 5:36 PM",
+      serv:"Harro",
+      amount: "$2000",
+      method: "Online",
+      status: "Success",
+    },
+    {
+      id: 3342355,
+      product: "PLUMBER",
+      customer: "Harold Carol",
+      date: "8 March | 6:17 AM",
+      serv:"BISH",
+      amount: "$2000",
+      method: "Online",
+      status: "Success",
     },
   ];
   return (
@@ -65,10 +85,11 @@ const TList = () => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell">Tracking ID</TableCell>
-            <TableCell className="tableCell">Product</TableCell>
+            <TableCell className="tableCell">Booking ID</TableCell>
+            <TableCell className="tableCell">Service</TableCell>
+            <TableCell className="tableCell">Service Provider</TableCell>
             <TableCell className="tableCell">Customer</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell">Date & Time</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
             <TableCell className="tableCell">Payment Method</TableCell>
             <TableCell className="tableCell">Status</TableCell>
@@ -80,10 +101,10 @@ const TList = () => {
               <TableCell className="tableCell">{row.id}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.img} alt="" className="image" />
                   {row.product}
                 </div>
               </TableCell>
+              <TableCell className="tableCell">{row.serv}</TableCell>
               <TableCell className="tableCell">{row.customer}</TableCell>
               <TableCell className="tableCell">{row.date}</TableCell>
               <TableCell className="tableCell">{row.amount}</TableCell>
