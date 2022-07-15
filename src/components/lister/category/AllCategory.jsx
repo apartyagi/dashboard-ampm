@@ -35,16 +35,6 @@ const AllCategory = () => {
 
   let dattt="";
   return (
-    // <div className="datatable">
-    //   <DataGrid
-    //     className="dat
-    //     agrid"
-    //     rows={allCategoryState}
-    //     columns={categoryColumns.concat(actionColumn)}
-    //     pageSize={9}
-    //     rowsPerPageOptions={[9]}
-    //   />
-    // </div>
     <>
     <div  style={{margin:20}}>
 
@@ -71,7 +61,7 @@ const AllCategory = () => {
               <TableCell component="th" scope="row"> {row.name} </TableCell>
               <TableCell align="left">{row.description}</TableCell>
              {
-               row.subCategory?.forEach(element => {
+               row.subCategoryList?.forEach(element => {
                     dattt=dattt+element.name+", "
               })
             }

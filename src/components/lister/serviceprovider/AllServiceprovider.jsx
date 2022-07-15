@@ -26,6 +26,7 @@ const Allusers = () => {
         setacc(acS.data.active);
         setall(alSer.data.total);
         setallServiceproviderState(response.data[0]);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       } 
