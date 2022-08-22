@@ -327,9 +327,8 @@ const SingleServiceProvider = () => {
                             (key, index) => (
                               <tr key={index}>
                                 <th scope="row">{key}</th>
-                                {key === "companyTradeLicensePhoto" ||
-                                key === "companyBusinessLicensePhoto" ? (
-                                  <>
+                                {key === "companyTradeLicensePhoto" || key === "companyBusinessLicensePhoto" ? (
+                                  <div>
                                     <td className="cellAction">
                                       <span
                                         type="button"
@@ -377,7 +376,7 @@ const SingleServiceProvider = () => {
                                         </div>
                                       </div>
                                     </div>
-                                  </>
+                                  </div>
                                 ) : (
                                   <>
                                     <td>{TradeAndBusinessInformation[key]}</td>

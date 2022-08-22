@@ -1,8 +1,8 @@
 import axios from "axios"
-const server='23.23.60.46';
-const remote='localhost'
-const base_url=`http://${server}`;
-const BASE_URL_FOR_LOGIN= `${base_url}:8080/api/sign-in`;
+const server='localhost'
+const remote='23.23.60.46';
+const base_url=`http://${remote}:8080`;
+const BASE_URL_FOR_LOGIN= `${base_url}/api/sign-in`;
 class Credential{
 
     loginuserAPI(logindetails){

@@ -17,8 +17,8 @@ const AllOrders = () => {
       serv:"Arthur",
       date: "1 March | 5:36 PM",
       amount: "$785",
-      method: "Cash on Delivery",
-      status: "Pending",
+      method: "Online",
+      status: "Success",
     },
     {
       id: 2235235,
@@ -27,7 +27,7 @@ const AllOrders = () => {
       date: "8 March | 6:17 AM",
       amount: "$900",
       serv:"Martha",
-      method: "Online Payment",
+      method: "Online",
       status: "Success",
     },
     {
@@ -37,8 +37,8 @@ const AllOrders = () => {
       date: "1 March | 5:36 PM",
       serv:"Eddie",
       amount: "$35",
-      method: "Cash on Delivery",
-      status: "Pending",
+      method: "Online",
+      status: "Success",
     },
     {
       id: 2357741,

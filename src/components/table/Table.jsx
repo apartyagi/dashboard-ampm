@@ -16,7 +16,6 @@ const TList = () => {
       serv:"Arthur",
       date: "1 March | 5:36 PM",
       amount: "$785",
-      method: "Cash on Delivery",
       status: "Pending",
     },
     {
@@ -26,8 +25,7 @@ const TList = () => {
       date: "8 March | 6:17 AM",
       amount: "$900",
       serv:"Martha",
-      method: "Online Payment",
-      status: "Success",
+      status: "Pending",
     },
     {
       id: 2342353,
@@ -36,7 +34,6 @@ const TList = () => {
       date: "1 March | 5:36 PM",
       serv:"Eddie",
       amount: "$35",
-      method: "Cash on Delivery",
       status: "Pending",
     },
     {
@@ -46,8 +43,7 @@ const TList = () => {
       date: "8 March | 6:17 AM",
       serv:"Jonas",
       amount: "$920",
-      method: "Online",
-      status: "Success",
+      status: "Pending",
     },
     {
       id: 2342355,
@@ -56,8 +52,7 @@ const TList = () => {
       date: "8 March | 6:17 AM",
       serv:"Adam",
       amount: "$2000",
-      method: "Online",
-      status: "Success",
+      status: "Pending",
     },
     {
       id: 5342355,
@@ -66,8 +61,7 @@ const TList = () => {
       date: "1 March | 5:36 PM",
       serv:"Harro",
       amount: "$2000",
-      method: "Online",
-      status: "Success",
+      status: "Pending",
     },
     {
       id: 3342355,
@@ -76,8 +70,7 @@ const TList = () => {
       date: "8 March | 6:17 AM",
       serv:"BISH",
       amount: "$2000",
-      method: "Online",
-      status: "Success",
+      status: "Pending",
     },
   ];
   return (
@@ -90,8 +83,7 @@ const TList = () => {
             <TableCell className="tableCell">Service Provider</TableCell>
             <TableCell className="tableCell">Customer</TableCell>
             <TableCell className="tableCell">Date & Time</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Payment Method</TableCell>
+            <TableCell className="tableCell">Estimate Amount</TableCell>
             <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
@@ -108,7 +100,6 @@ const TList = () => {
               <TableCell className="tableCell">{row.customer}</TableCell>
               <TableCell className="tableCell">{row.date}</TableCell>
               <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.method}</TableCell>
               <TableCell className="tableCell">
                 <span className={`status ${row.status}`}>{row.status}</span>
               </TableCell>

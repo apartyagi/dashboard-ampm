@@ -20,6 +20,8 @@ import ActiveServiceproviders from "./components/lister/activeserviceprovider/Ac
 import InActiveServiceproviders from "./components/lister/inactiveserviceprovider/InActivelServiceproviders";
 import RecentBooking from "./components/recentbooking/RecentBooking";
 import AllOrders from "./components/allorders/AllOrders";
+import AddTime from "./components/adder/timing/AddTime";
+import AddPrice from "./components/adder/pricemanager/AddPrice";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -105,6 +107,29 @@ function App() {
                   }
                 />
               </Route>
+              <Route path="add-time" element={<List />}>
+                <Route
+                  index
+                  element={
+                    <AddTime
+                      title="Add Timing"
+                    />
+                  }
+                />
+              </Route>
+
+              <Route path="man-price" element={<List />}>
+                <Route
+                  index
+                  element={
+                    <AddPrice
+                      title="Manage Price"
+                    />
+                  }
+                />
+              </Route>
+
+              
 
               <Route path="*" element={<h1>Not Found</h1>} />
             </Route>

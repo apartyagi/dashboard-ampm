@@ -1,7 +1,7 @@
 import axios from "axios";
 const server='localhost';
 const remote='23.23.60.46'
-const base_url=`http://${server}:8080`;
+const base_url=`http://${remote}:8080`;
 
 const URL_fetchAllServiceProvider =`${base_url}/api/admin/fetch_all_serviceProviders`;
 const URL_fetchAllActiveServiceProvider =`${base_url}/api/admin/all_active_serPro`;

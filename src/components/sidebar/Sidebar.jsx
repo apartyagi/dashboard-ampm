@@ -2,10 +2,19 @@ import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
+import CategoryIcon from '@mui/icons-material/Category';
 import StoreIcon from "@mui/icons-material/Store";
+import InventoryIcon from '@mui/icons-material/Inventory';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import PriceChangeIcon from '@mui/icons-material/PriceChange';
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import PersonOffIcon from '@mui/icons-material/PersonOff';
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
@@ -32,10 +41,10 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
             </Link>
-          <p className="title"> ACTIVE LISTS</p>
+          <p className="title">LISTS</p>
           <Link to="/customer" style={{ textDecoration: "none" }}>
             <li>
-              <StoreIcon className="icon" />
+              <PersonOutlineIcon className="icon" />
               <span>Customer</span>
             </li>
           </Link>
@@ -45,22 +54,32 @@ const Sidebar = () => {
             <span>Service Provider</span>
           </li>
           </Link>
-          <Link to="/category" style={{ textDecoration: "none" }}>
+          <Link to={`/activeserv`} style={{
+            textDecoration:"none"
+          }}>
           <li>
-            <LocalShippingIcon className="icon" />
-            <span>Category</span>
+            <SupervisedUserCircleIcon className="icon" />
+            <span>Active Service Providers</span>
           </li>
           </Link>
-          <Link to="/subcategory" style={{ textDecoration: "none" }}>
+          <Link to={`/inactiveserv`} style={{
+            textDecoration:"none"
+          }}>
+          <li>
+            <PersonOffIcon className="icon" />
+            <span>InActive Service Provider</span>
+          </li>
+          </Link>
+          {/* <Link to="/subcategory" style={{ textDecoration: "none" }}>
           <li>
             <LocalShippingIcon className="icon" />
             <span>Sub Category</span>
           </li>
-          </Link>
-          <p className="title">ADD</p>
+          </Link> */}
+          <p className="title">CONTROL PANEL </p>
           <Link to="/add-cat" style={{textDecoration:"none"}}>
           <li>
-            <LocalShippingIcon className="icon" />
+            <CategoryIcon className="icon" />
             <span>Add Category</span>
           </li>
           </Link>
@@ -70,37 +89,25 @@ const Sidebar = () => {
             <span> Add Sub Category</span>
           </li>
           </Link>
-          <Link to="/add-sub-cat" style={{textDecoration:"none"}}> 
+          <Link to="/add-time" style={{textDecoration:"none"}}> 
           <li>
-            <LocalShippingIcon className="icon" />  
+            <AccessTimeIcon className="icon" />  
+            <span>Timing</span>
+          </li>
+          </Link>
+          <Link to="/man-price" style={{textDecoration:"none"}}> 
+          <li>
+            <PriceChangeIcon className="icon" />  
             <span> Manage Price</span>
           </li>
           </Link>
           <p className="title">SERVICE</p>
-          <Link to={`/activeserv`} style={{
-            textDecoration:"none"
-          }}>
+          <Link to="/category" style={{ textDecoration: "none" }}>
           <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>Active Service Providers</span>
+            <InventoryIcon className="icon" />
+            <span>Category</span>
           </li>
           </Link>
-          <Link to={`/inactiveserv`} style={{
-            textDecoration:"none"
-          }}>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>InActive Service Provider</span>
-          </li>
-          </Link>
-          <Link to={`/rb`} style={{
-            textDecoration:"none"
-          }}>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Recent Booking</span>
-          </li>
-        </Link>
           <p className="title">PAYMENTS</p>
           <Link  to={`/alor`} style={{
             textDecoration:"none"
@@ -110,12 +117,14 @@ const Sidebar = () => {
             <span>All Orders</span>
           </li>
           </Link>
-          <Link to={`/contact`} style={{textDecoration:"none"}}>
+          <Link to={`/rb`} style={{
+            textDecoration:"none"
+          }}>
           <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Contact us</span>
+            <PendingActionsIcon className="icon" />
+            <span>Pending Orders</span>
           </li>
-          </Link>
+        </Link>
           {/* <Link to={`/about`} style={{textDecoration:"none"}}>
           <li>
             <SettingsApplicationsIcon className="icon" />
@@ -127,6 +136,12 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
+          <Link to={`/contact`} style={{textDecoration:"none"}}>
+          <li>
+            <SupportAgentIcon className="icon" />
+            <span>Contact us</span>
+          </li>
+          </Link>
           <Link to="" onClick={()=>{
             Credential.logoutUserInFrontEnd();
             window.location.href="/"

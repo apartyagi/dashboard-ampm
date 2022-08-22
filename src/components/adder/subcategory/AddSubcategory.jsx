@@ -1,16 +1,32 @@
 import "./addsubcategory.scss";
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import MenuItem from "@mui/material/MenuItem";
+import CategoryS from "../../../service/CategoryS";
 import Select from "@mui/material/Select";
 
 
-const AddSubcategory = ({ inputs, title }) => {
+const AddSubcategory = ({title }) => {
+
+  useEffect(() => {
+      const fetchAllcategoryForoptions=async()=>{
+        const work =await CategoryS.fetchAllCategoryOnly();
+        setcatgeory(work.data);
+      }
+      fetchAllcategoryForoptions();
+  }, [])
+  
+
+
+
   const [createsubCategory, setcreatesubCategory] = useState({
     subcategory:"",
     description:"",
+    disclamer:"",
     categoryid:""
   });
+
+  const [category,setcatgeory] = useState([]);
   
   const formhandler=(e)=>{
     const value=e.target.value;
@@ -19,8 +35,6 @@ const AddSubcategory = ({ inputs, title }) => {
   
 
   const [desc, setdesc] = React.useState("");
-  const [catgeory, setcatgeory] = useState([]);
-  const ariaLabel = { 'aria-label': 'description' };
 
 
   const handleChange = (event) => {
@@ -31,29 +45,6 @@ const AddSubcategory = ({ inputs, title }) => {
     e.preventDefault();
     console.log(createsubCategory);
   }
-
-  const finalSubCategoryPostData = {
-    SubcategoryName: "",
-    subcategoryDesc: "",
-    catgeory: {
-      id: "",
-    },
-  };
-
-  const getAllCategory = [
-    {
-      name: "plumber",
-    },
-    {
-      name: "electrical",
-    },
-    {
-      name: "HVAC",
-    },
-    {
-      name: "Lock Smith",
-    },
-  ];
 
   return (
     <div className="new">
@@ -69,27 +60,31 @@ const AddSubcategory = ({ inputs, title }) => {
           <div className="right">
             <form>
             <div className="formInput">
-                  <label>Category</label>
+                  <label>Type</label>
                   <input type="text" name="subcategory" onChange={(e)=>formhandler(e)} value={createsubCategory.subcategory}  placeholder={`Enter Category Name`} />
                 </div>
                 <div className="formInput">
-                  <label>Category</label>
-                  <input type="text" name="description" onChange={(e)=>formhandler(e)} value={createsubCategory.description}  placeholder={`Enter Category Name`} />
+                  <label>Description</label>
+                  <input type="text" name="description" onChange={(e)=>formhandler(e)} value={createsubCategory.description}  placeholder={`Enter Category Description`} />
+                </div>
+                <div className="formInput">
+                  <label>Disclamer</label>
+                  <input type="text" name="disclamer" onChange={(e)=>formhandler(e)} value={createsubCategory.disclamer}  placeholder={`Enter Discamer`} />
                 </div>
                 <Select
                      size="small"
                      value={createsubCategory.categoryid}
-                     onChange={handleChange}
+                     onChange={(e)=>formhandler(e)}
                      name="categoryid"
                      displayEmpty
                      inputProps={{ 'aria-label': 'Without label' }}
                      >
                      <MenuItem size="small" value="">
-                       <em>Select your category first</em>
+                       <em>Select category</em>
                      </MenuItem>
                     {
-                      getAllCategory.map((dat,ind)=>(
-                        <MenuItem value={0+ind} key={ind}>
+                      category.map((dat,ind)=>(
+                        <MenuItem value={dat.id} key={ind}>
                           {dat.name}
                         </MenuItem>
                       ))
