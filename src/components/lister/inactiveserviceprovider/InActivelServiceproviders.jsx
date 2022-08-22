@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Widget from "../../widget/Widget";
 import ServiceProvider from "../../../service/ServiceProvider";
+import Admin from "../../../service/Admin";
 import {
   inactiveserviceproviderColumns,
 } from "../../../temp/ListofAllInActiveServiceProvider";
@@ -18,15 +19,12 @@ const InActivelServiceproviders = () => {
 useEffect(() => {
     const fetchApi=async()=>{
       try{
-        const respone=await ServiceProvider.fetchAllINACTIVE_SERVICE_PROVIDERS();
-        const alSer=await ServiceProvider.findCountForAllServiceProviders();
-        const acS=await ServiceProvider.findCountForActiveServiceProviders();
-        const inS =await ServiceProvider.findCountForInActiveServiceProviders();
-        setinn(inS.data.inactive);
-        setacc(acS.data.active);
-        setall(alSer.data.total);
+        const respone=await ServiceProvider.fetchAllInActiveServiceproviders();
+        const data=await Admin.fetchAllCountForServiceProviders();
         setinactiveServiceProviders(respone.data);
-        console.log(respone.data);
+        setall(data.data.totalServiceProvider);
+        setacc(data.data.activeServiceProvider);
+        setinn(data.data.inactiveServiceProvider);
       }catch(err){
         console.warn(err);
       }

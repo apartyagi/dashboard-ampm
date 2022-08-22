@@ -33,12 +33,6 @@ const Sidebar = () => {
           </li>
             </Link>
           <p className="title"> ACTIVE LISTS</p>
-          {/* <Link to="/users" style={{ textDecoration: "none" }}>
-            <li>
-               <PersonOutlineIcon className="icon" /> 
-               <span>Users</span> 
-            </li>
-          </Link> */}
           <Link to="/customer" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
@@ -58,24 +52,30 @@ const Sidebar = () => {
           </li>
           </Link>
           <Link to="/subcategory" style={{ textDecoration: "none" }}>
-          {/* <li>
+          <li>
             <LocalShippingIcon className="icon" />
             <span>Sub Category</span>
-          </li> */}
+          </li>
           </Link>
-          {/* <p className="title">ADD</p>
+          <p className="title">ADD</p>
           <Link to="/add-cat" style={{textDecoration:"none"}}>
           <li>
-            <InsertChartIcon className="icon" />
+            <LocalShippingIcon className="icon" />
             <span>Add Category</span>
           </li>
           </Link>
           <Link to="/add-sub-cat" style={{textDecoration:"none"}}> 
           <li>
-            <NotificationsNoneIcon className="icon" />
+            <LocalShippingIcon className="icon" />  
             <span> Add Sub Category</span>
           </li>
-          </Link> */}
+          </Link>
+          <Link to="/add-sub-cat" style={{textDecoration:"none"}}> 
+          <li>
+            <LocalShippingIcon className="icon" />  
+            <span> Manage Price</span>
+          </li>
+          </Link>
           <p className="title">SERVICE</p>
           <Link to={`/activeserv`} style={{
             textDecoration:"none"

@@ -17,17 +17,15 @@ const AllCategory = () => {
     const fetchApi=async()=>{
       try{
         const response=await CategoryS.fetchAllCategory();
-        console.log(response.data[0]);
-        setallCategoryState(response.data[0]);
+        console.log(response.data);
+        setallCategoryState(response.data);
       }catch(e){
         console.log(e);
       }
     }
     fetchApi();
   }, [])
-  let subs="";
   const [data, setData] = useState(categoryRow);
-  const [getcategory, setgetcategory] = useState([]);
   
   const handledit = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -44,8 +42,8 @@ const AllCategory = () => {
           <TableRow>
           <TableCell>S.no</TableCell>
             <TableCell>Category Name</TableCell>
-            <TableCell align="left">Description</TableCell>
-            <TableCell align="left">SubCategory</TableCell>
+            {/* <TableCell align="left">Description</TableCell> */}
+            <TableCell align="left">Sub Category</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -59,16 +57,9 @@ const AllCategory = () => {
               >
                <TableCell component="th" scope="row">{row.id}</TableCell>
               <TableCell component="th" scope="row"> {row.name} </TableCell>
-              <TableCell align="left">{row.description}</TableCell>
-             {
-               row.subCategoryList?.forEach(element => {
-                    dattt=dattt+element.name+", "
-              })
-            }
-             <TableCell align="left">{dattt}</TableCell>
-              {
-               dattt=""
-              }
+              {/* <TableCell align="left">{row.description}</TableCell> */}
+          
+             <TableCell align="left">{row.subcategory}</TableCell>
              
             </TableRow>
           ))}

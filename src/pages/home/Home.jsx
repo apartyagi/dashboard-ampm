@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import "./home.scss";
 import Widget from "../../components/widget/Widget";
 import Table from "../../components/table/Table";
-import ServiceS from "../../service/ServiceProvider";
+import Admin from "../../service/Admin";
 import CutomerS from "../../service/CustomerList";
 import { useEffect,useState } from "react";
 
@@ -17,14 +17,11 @@ const Home = () => {
 
   useEffect(() => {
     const fetchApi=async()=>{
-      const alCus=await CutomerS.findCountForAllCustomers();
-      const alSer=await ServiceS.findCountForAllServiceProviders();
-      const acSer=await ServiceS.findCountForActiveServiceProviders();
-      const inSer=await ServiceS.findCountForInActiveServiceProviders();
-      setalc(alCus.data.total);
-      settot(alSer.data.total);
-      setact(acSer.data.active);
-      setina(inSer.data.inactive);
+      const alCus=await Admin.fetchAllCountForDashboardHome();
+      setalc(alCus.data.totalCustomer);
+      settot(alCus.data.totalServiceProvider);
+      setact(alCus.data.totalActiveServiceProvider);
+      setina(alCus.data.totalInactiveServiceProvider);
     }
     fetchApi();
   }, [])

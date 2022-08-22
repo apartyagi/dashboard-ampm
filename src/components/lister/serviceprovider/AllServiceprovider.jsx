@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import React,{ useState, useEffect } from "react";
 import Widget from "../../widget/Widget";
 import ServiceProvider from "../../../service/ServiceProvider";
+import Admin from "../../../service/Admin";
 
 const Allusers = () => {
   const [allServiceproviderState, setallServiceproviderState] = useState([]);
@@ -19,13 +20,11 @@ const Allusers = () => {
     const fetchApi = async () => {
       try {
         const response = await ServiceProvider.fetchAllServiceProvider();
-        const alSer=await ServiceProvider.findCountForAllServiceProviders();
-        const acS=await ServiceProvider.findCountForActiveServiceProviders();
-        const inS =await ServiceProvider.findCountForInActiveServiceProviders();
-        setinn(inS.data.inactive);
-        setacc(acS.data.active);
-        setall(alSer.data.total);
-        setallServiceproviderState(response.data[0]);
+        setallServiceproviderState(response.data);
+        const data = await Admin.fetchAllCountForServiceProviders();
+        setall(data.data.totalServiceProvider);
+        setacc(data.data.activeServiceProvider);
+        setinn(data.data.inactiveServiceProvider);
         console.log(response.data);
       } catch (e) {
         console.log(e);

@@ -1,7 +1,7 @@
 export const customerColumns = [
     { field: "id", headerName: "ID", width: 80 },
     {
-      field: "name",
+      field: "customerName",
       headerName: "Customer Name",
       // width: 230,
       flex:1
@@ -26,14 +26,14 @@ export const customerColumns = [
       flex:1
     },
     {
-      field: "status",
+      field: "sta",
       headerName: "Status",
       // width: 160,
       flex:1,
       renderCell: (params) => {
         return (
-          <div className={`cellWithStatus ${params.row.status}`}>
-            {params.row.status}
+          <div className={`cellWithStatus ${params.row.sta}`}>
+            {params.row.sta}
           </div>
         );
       },

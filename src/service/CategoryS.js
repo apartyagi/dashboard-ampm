@@ -1,10 +1,9 @@
 import axios from "axios";
-const server='23.23.60.46';
-// const remote='23.23.60.46'
-const base_url=`http://${server}`;
-const BASE_URL_FOR_CATEGORY=`${base_url}:8080/admin/fetchallcategory`;
-// const BASE_URL_FOR_ADD_CATEGORY=`${base_url}:8080/admin/addcategory`;
-// const BASE_URL_FOR_ADD_SubCATEG=`${base_url}:8080/admin/addsubcategory`;
+const server='127.0.0.1';
+const remote='23.23.60.46'
+const base_url=`http://${server}:8080`;
+const BASE_URL_FOR_CATEGORY=`${base_url}/api/admin/fetch_all_category`;
+
 
 class CategoryS{
     fetchAllCategory(){

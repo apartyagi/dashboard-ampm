@@ -9,21 +9,27 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Customer from '../../../service/CustomerList'
+import Admin from '../../../service/Admin'
 import Widget from "../../widget/Widget";
 
 
 const Allusers = () => {
   const [allCustomerState, setallCustomerState] = useState([]);
-  const [tot,settotal]=useState(0);
+  const [tot, setto]  = useState(0);
+  const [ina, setina] = useState(0);
+  const [act, setact] = useState(0);
 
   useEffect(() => {
      const fetchApi=async()=>{
        try{
          const response =await Customer.fetchAllCustomerFromApi();
-         const tot=await Customer.findCountForAllCustomers();
-         setallCustomerState(response.data[0]);
-         settotal(tot.data.total);
-         console.log(response.data[0]);
+         const coun =await Admin.fetchAllCountForCustomers();
+         setallCustomerState(response.data);
+         setto(coun.data.asTotalCustomer);
+         setina(coun.data.inActiveCustomer);
+         setact(coun.data.activeCustomer);
+         console.log(response.data);
+         console.log(coun.data);
 
        }catch(e){
          console.log(e);
@@ -72,16 +78,6 @@ const Allusers = () => {
   }
  }
 
-const userrowww=[
-  {
-    id:allCustomerState?.id,
-    dob:allCustomerState?.dateofbirth,
-    contact: allCustomerState?.contact_no,
-    city: allCustomerState?.city,
-    address: allCustomerState?.address,
-  }
-]    
-
   const actionColumn = [
     {
       field: "action",
@@ -104,8 +100,8 @@ const userrowww=[
       <div className="homeContainer">
         <div className="widgets">
           <Widget type="al-cus" amount={tot} />
-          <Widget type="ac-cus" amount={tot} />
-          <Widget type="in-cus" amount="0" />
+          <Widget type="ac-cus" amount={act} />
+          <Widget type="in-cus" amount={ina} />
         </div>
         
       </div>

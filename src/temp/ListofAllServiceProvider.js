@@ -20,14 +20,14 @@ export const serviceproviderColumns = [
       flex:1
     }, 
      {
-      field:"status",
+      field:"sta",
       headerName:"Status",
       // width:230
       flex:1,
       renderCell: (params) => {
         return (
-          <div className={`cellWithStatus ${params.row.status}`}>
-            {params.row.status}
+          <div className={`cellWithStatus ${params.row.sta}`}>
+            {params.row.sta}
           </div>
         );
     }

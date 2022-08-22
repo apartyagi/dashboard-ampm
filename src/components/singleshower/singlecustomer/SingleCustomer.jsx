@@ -36,7 +36,7 @@ const SingleCustomer = () => {
   useEffect(() => {
     const fetchApi=async()=>{
       try{
-        const response=await CustomerS.fetchSingleCustomerfromApi(id);
+        const response=await CustomerS.fetchSingleCustomerFromApi(id);
         console.log(response.data);
         setsingleCustomerState(response.data);
           setloading(false);  
