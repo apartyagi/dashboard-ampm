@@ -2,11 +2,11 @@ import axios from "axios"
 const server='localhost'
 const remote='23.23.60.46';
 const base_url=`http://${remote}:8080`;
-const BASE_URL_FOR_LOGIN= `${base_url}/api/sign-in`;
+const BASE_URL_FOR_LOGIN= `${base_url}/api/user/sign_in`;
 class Credential{
 
     loginuserAPI(logindetails){
-       return axios.post(BASE_URL_FOR_LOGIN,logindetails,logindetails);
+       return axios.post(BASE_URL_FOR_LOGIN,logindetails);
     }
     loginUserInFrontEnd(token){
         localStorage.setItem('token',token);

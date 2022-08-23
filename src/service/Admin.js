@@ -11,7 +11,7 @@ const counter_servicepro=`${base_url}/api/admin/adam_count_serviceProvider`;
 class Admin{
     
     fetchAllCountForDashboardHome(){
-        return axios.get(counter_home_dash)
+        return axios.get(counter_home_dash,{headers:{"Access-Control-Allow-Origin": "*"}})
     }
     fetchAllCountForCustomers(){
         return axios.get(counter_customer);
